@@ -1,5 +1,6 @@
 import "./style.css";
 import { loadWasm, formatWithShfmt, getWasmStatus } from "./formatter";
+import { loadHighlighter, highlightShell } from "./highlighter";
 import type {
   FormatOptions,
   IndentType,
@@ -82,8 +83,14 @@ function setOutputPlaceholder(): void {
 }
 
 function setOutputSuccess(text: string): void {
-  outputArea.textContent = text;
-  outputArea.className = "output-area";
+  const html = highlightShell(text);
+  if (html) {
+    outputArea.innerHTML = html;
+    outputArea.className = "output-area highlighted";
+  } else {
+    outputArea.textContent = text;
+    outputArea.className = "output-area";
+  }
 }
 
 function setOutputError(text: string): void {
@@ -196,3 +203,4 @@ document.addEventListener("keydown", (e) => {
 
 // --- Init ---
 void loadWasm(updateStatus);
+void loadHighlighter();

@@ -284,6 +284,27 @@ body {
   color: var(--error);
 }
 
+.output-area.highlighted {
+  padding: 0;
+  color: inherit;
+}
+
+.output-area.highlighted pre.shiki {
+  margin: 0;
+  padding: 16px;
+  background: transparent !important;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow: visible;
+}
+
+.output-area.highlighted pre.shiki code {
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 /* === Footer === */
 .footer {
   display: flex;
