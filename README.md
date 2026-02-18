@@ -1,5 +1,7 @@
 # shfmt.web
 
+![screenshot](screenshot.png)
+
 Browser-based shell script formatter powered by [shfmt](https://github.com/mvdan/sh) compiled to WebAssembly. All formatting runs entirely client-side — no data is sent to any server.
 
 ## Setup
