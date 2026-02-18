@@ -1,5 +1,2 @@
 name = "shfmt-web"
-compatibility_date = "2026-02-18"
-
-[assets]
-directory = "./dist"
+pages_build_output_dir = "dist"
