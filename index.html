@@ -17,7 +17,7 @@
       <!-- Header -->
       <header class="header">
         <div class="logo">
-          <span class="logo-accent">$</span> shfmt<span class="logo-accent">.</span>web
+          <span class="logo-accent">$</span> shfmt<span class="logo-accent">-</span>web
         </div>
         <span class="badge">client-side</span>
         <span class="subtitle">Shell script formatter &mdash; runs entirely in your browser</span>
@@ -62,12 +62,15 @@
               <span class="pane-label">Input</span>
               <button class="pane-button" data-testid="clear-button">Clear</button>
             </div>
-            <textarea
-              class="input-editor"
-              data-testid="input-editor"
-              placeholder="Paste your shell script here..."
-              spellcheck="false"
-            ></textarea>
+            <div class="editor-body">
+              <div class="line-numbers" aria-hidden="true"></div>
+              <textarea
+                class="input-editor"
+                data-testid="input-editor"
+                placeholder="Paste your shell script here..."
+                spellcheck="false"
+              ></textarea>
+            </div>
           </div>
           <!-- Output Pane -->
           <div class="editor-pane">
