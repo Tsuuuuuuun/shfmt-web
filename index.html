@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>shfmt.web — Shell Script Formatter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="/wasm_exec.js"></script>
+  </head>
+  <body>
+    <div class="app">
+      <!-- Header -->
+      <header class="header">
+        <div class="logo">
+          <span class="logo-accent">$</span> shfmt<span class="logo-accent">.</span>web
+        </div>
+        <span class="badge">client-side</span>
+        <span class="subtitle">Shell script formatter &mdash; runs entirely in your browser</span>
+      </header>
+
+      <!-- Options Bar -->
+      <div class="options-bar">
+        <div class="option-group">
+          <label for="option-indent">Indent</label>
+          <select id="option-indent" class="option-select" data-testid="option-indent">
+            <option value="tab" selected>Tab</option>
+            <option value="2">2 spaces</option>
+            <option value="4">4 spaces</option>
+          </select>
+        </div>
+        <div class="option-divider"></div>
+        <div class="option-group">
+          <label for="option-shell">Shell</label>
+          <select id="option-shell" class="option-select" data-testid="option-shell">
+            <option value="bash" selected>bash</option>
+            <option value="posix">posix</option>
+            <option value="mksh">mksh</option>
+          </select>
+        </div>
+        <div class="option-divider"></div>
+        <div class="option-group">
+          <label for="option-binop">Binary Ops</label>
+          <select id="option-binop" class="option-select" data-testid="option-binop">
+            <option value="default" selected>Default</option>
+            <option value="start">Start of line</option>
+            <option value="end">End of line</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Editor Section -->
+      <section class="editor-section">
+        <div class="editor-container">
+          <!-- Input Pane -->
+          <div class="editor-pane">
+            <div class="pane-header">
+              <span class="pane-label">Input</span>
+              <button class="pane-button" data-testid="clear-button">Clear</button>
+            </div>
+            <textarea
+              class="input-editor"
+              data-testid="input-editor"
+              placeholder="Paste your shell script here..."
+              spellcheck="false"
+            ></textarea>
+          </div>
+          <!-- Output Pane -->
+          <div class="editor-pane">
+            <div class="pane-header">
+              <span class="pane-label">Output</span>
+              <button class="pane-button" data-testid="copy-button">Copy</button>
+            </div>
+            <div class="output-area placeholder" data-testid="output-area">Formatted output will appear here</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <div class="status">
+          <div class="status-dot loading" data-testid="status-dot"></div>
+          <span class="status-text" data-testid="status-text">Loading shfmt WASM...</span>
+        </div>
+        <button class="format-button" data-testid="format-button" disabled>
+          Format
+          <span class="shortcut-hint"></span>
+        </button>
+      </footer>
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
