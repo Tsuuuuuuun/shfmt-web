@@ -198,6 +198,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 0;
+  min-width: 0;
 }
 
 .editor-pane:first-child {
@@ -243,9 +244,31 @@ body {
   transform: scale(0.97);
 }
 
+.editor-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.line-numbers {
+  flex-shrink: 0;
+  width: 30px;
+  padding: 16px 0;
+  text-align: right;
+  color: var(--text-dim);
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  background-color: var(--surface);
+  user-select: none;
+  overflow: hidden;
+  white-space: pre;
+}
+
 .input-editor {
   flex: 1;
-  width: 100%;
+  width: 0;
   resize: none;
   font-family: "IBM Plex Mono", monospace;
   font-size: 13px;
@@ -254,7 +277,7 @@ body {
   color: var(--text);
   background-color: var(--surface);
   border: none;
-  padding: 16px;
+  padding: 16px 16px 16px 12px;
   outline: none;
 }
 
@@ -270,18 +293,42 @@ body {
   line-height: 1.6;
   color: var(--accent);
   background-color: var(--surface);
-  padding: 16px;
-  white-space: pre;
+  padding: 16px 16px 16px 0;
   overflow: auto;
+  counter-reset: line;
+}
+
+.output-area .output-line,
+.output-area.highlighted pre.shiki code > .line {
+  display: block;
+  position: relative;
+  padding-left: 42px;
+  counter-increment: line;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  min-height: 1.6em;
+}
+
+.output-area .output-line::before,
+.output-area.highlighted pre.shiki code > .line::before {
+  content: counter(line);
+  position: absolute;
+  left: 0;
+  width: 30px;
+  text-align: right;
+  color: var(--text-dim);
+  user-select: none;
 }
 
 .output-area.placeholder {
   color: var(--text-dim);
   font-style: italic;
+  padding-left: 16px;
 }
 
 .output-area.error {
   color: var(--error);
+  padding-left: 16px;
 }
 
 .output-area.highlighted {
@@ -291,7 +338,7 @@ body {
 
 .output-area.highlighted pre.shiki {
   margin: 0;
-  padding: 16px;
+  padding: 16px 16px 16px 0;
   background: transparent !important;
   font-family: "IBM Plex Mono", monospace;
   font-size: 13px;
@@ -303,6 +350,8 @@ body {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  counter-reset: line;
+  white-space: normal;
 }
 
 /* === Footer === */
