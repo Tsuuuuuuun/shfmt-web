@@ -1,4 +1,4 @@
-# shfmt.web
+# shfmt-web
 
 ![screenshot](screenshot.png)
 
